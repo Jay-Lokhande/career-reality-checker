@@ -318,6 +318,173 @@ body {
   font-size: 0.95rem;
 }
 
+.weight {
+  color: #666;
+  font-weight: normal;
+  font-size: 0.85rem;
+}
+
+.score-calculation {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #555;
+  font-family: 'Courier New', monospace;
+}
+
+/* Probability Bands Explanation */
+.probability-bands-explanation {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.explanation-intro {
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.band-explanation {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 6px;
+  border-left: 4px solid #4a5568;
+}
+
+.band-explanation:last-child {
+  margin-bottom: 0;
+}
+
+.band-explanation h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.band-description {
+  color: #555;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.contributing-factors,
+.required-actions {
+  margin-top: 1rem;
+}
+
+.contributing-factors strong,
+.required-actions strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.contributing-factors ul,
+.required-actions ul {
+  margin-left: 1.5rem;
+  color: #555;
+}
+
+.contributing-factors li,
+.required-actions li {
+  margin-bottom: 0.5rem;
+}
+
+/* Enhanced Warnings */
+.warning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.warning-flag {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-family: 'Courier New', monospace;
+  background: #f0f0f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+}
+
+.warning-message {
+  margin-bottom: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.warning-context,
+.warning-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.warning-context strong,
+.warning-actions strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.warning-context ul,
+.warning-actions ul {
+  margin-left: 1.5rem;
+  color: #555;
+}
+
+.warning-context li,
+.warning-actions li {
+  margin-bottom: 0.5rem;
+}
+
+/* Assumptions Section */
+.assumptions-section {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.assumptions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.assumption-item {
+  padding: 1.25rem;
+  background: white;
+  border-radius: 6px;
+  border-left: 3px solid #5a9;
+}
+
+.assumption-item strong {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+  font-size: 1.05rem;
+}
+
+.assumption-item p {
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
 @media (max-width: 600px) {
   .container {
     padding: 1rem 0.5rem;

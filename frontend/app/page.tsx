@@ -273,6 +273,99 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
         </div>
       </div>
 
+      <div className="probability-bands-explanation">
+        <h2>Why These Probability Bands?</h2>
+        <p className="explanation-intro">
+          Each probability band represents a different scenario based on how well your current profile
+          aligns with your goal. Here's why each band was assigned:
+        </p>
+
+        <div className="band-explanation">
+          <h3>
+            Best Case ({result.probabilityBands.best.estimatedTimelineMonths} months,{' '}
+            {result.probabilityBands.best.likelihood}% likelihood)
+          </h3>
+          <p className="band-description">
+            This outcome assumes everything goes well: high motivation, consistent effort, and favorable
+            market conditions.
+          </p>
+          <div className="contributing-factors">
+            <strong>Contributing factors:</strong>
+            <ul>
+              {result.probabilityBands.best.contributingFactors.map((factor, idx) => (
+                <li key={idx}>{factor}</li>
+              ))}
+            </ul>
+          </div>
+          {result.probabilityBands.best.requiredActions.length > 0 && (
+            <div className="required-actions">
+              <strong>What you'd need to do:</strong>
+              <ul>
+                {result.probabilityBands.best.requiredActions.map((action, idx) => (
+                  <li key={idx}>{action}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div className="band-explanation">
+          <h3>
+            Average Case ({average.estimatedTimelineMonths} months, {average.likelihood}% likelihood)
+          </h3>
+          <p className="band-description">
+            This is the most likely outcome: standard progress with typical challenges along the way.
+          </p>
+          <div className="contributing-factors">
+            <strong>Contributing factors:</strong>
+            <ul>
+              {average.contributingFactors.map((factor, idx) => (
+                <li key={idx}>{factor}</li>
+              ))}
+            </ul>
+          </div>
+          {average.requiredActions.length > 0 && (
+            <div className="required-actions">
+              <strong>What you'd need to do:</strong>
+              <ul>
+                {average.requiredActions.map((action, idx) => (
+                  <li key={idx}>{action}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div className="band-explanation">
+          <h3>
+            Worst Case ({result.probabilityBands.worst.estimatedTimelineMonths} months,{' '}
+            {result.probabilityBands.worst.likelihood}% likelihood)
+          </h3>
+          <p className="band-description">
+            This outcome accounts for significant obstacles, unexpected challenges, or if preparation
+            takes longer than expected.
+          </p>
+          <div className="contributing-factors">
+            <strong>Contributing factors:</strong>
+            <ul>
+              {result.probabilityBands.worst.contributingFactors.map((factor, idx) => (
+                <li key={idx}>{factor}</li>
+              ))}
+            </ul>
+          </div>
+          {result.probabilityBands.worst.requiredActions.length > 0 && (
+            <div className="required-actions">
+              <strong>What you'd need to do:</strong>
+              <ul>
+                {result.probabilityBands.worst.requiredActions.map((action, idx) => (
+                  <li key={idx}>{action}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+
       <div className="time-requirement-section">
         <h2>Time Commitment</h2>
         <p>
@@ -290,16 +383,45 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
       {result.warnings.length > 0 && (
         <div className="warnings-section">
           <h2>Important Considerations</h2>
+          <p className="explanation-intro">
+            These warnings appeared because specific conditions in your profile or goal triggered
+            our evaluation rules. Each warning explains what was detected and why it matters.
+          </p>
           {result.warnings.map((warning, idx) => (
             <div key={idx} className={`warning warning-${warning.severity}`}>
-              <strong>{warning.severity === 3 ? '⚠️ High Priority:' : warning.severity === 2 ? '⚡ Medium Priority:' : 'ℹ️ Note:'}</strong>
-              <p>{warning.message}</p>
+              <div className="warning-header">
+                <strong>
+                  {warning.severity === 3
+                    ? '⚠️ High Priority:'
+                    : warning.severity === 2
+                    ? '⚡ Medium Priority:'
+                    : 'ℹ️ Note:'}
+                </strong>
+                <span className="warning-flag">Flag: {warning.flag.replace(/_/g, ' ')}</span>
+              </div>
+              <p className="warning-message">{warning.message}</p>
+              {warning.context && Object.keys(warning.context).length > 0 && (
+                <div className="warning-context">
+                  <strong>Why this warning appeared:</strong>
+                  <ul>
+                    {Object.entries(warning.context).map(([key, value]) => (
+                      <li key={key}>
+                        <strong>{key.replace(/([A-Z])/g, ' $1').trim()}:</strong>{' '}
+                        {typeof value === 'object' ? JSON.stringify(value) : String(value)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               {warning.suggestedActions && warning.suggestedActions.length > 0 && (
-                <ul>
-                  {warning.suggestedActions.map((action, actionIdx) => (
-                    <li key={actionIdx}>{action}</li>
-                  ))}
-                </ul>
+                <div className="warning-actions">
+                  <strong>Suggested actions:</strong>
+                  <ul>
+                    {warning.suggestedActions.map((action, actionIdx) => (
+                      <li key={actionIdx}>{action}</li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
           ))}
@@ -334,18 +456,109 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
 
       <div className="score-breakdown">
         <h2>Score Breakdown</h2>
+        <p className="explanation-intro">
+          Your overall score is calculated from four components, each weighted differently:
+        </p>
         <div className="breakdown-grid">
           <div>
             <strong>Experience:</strong> {result.scoreBreakdown.experienceScore}/100
+            <span className="weight"> (30% weight)</span>
           </div>
           <div>
             <strong>Skills:</strong> {result.scoreBreakdown.skillScore}/100
+            <span className="weight"> (30% weight)</span>
           </div>
           <div>
             <strong>Education:</strong> {result.scoreBreakdown.educationScore}/100
+            <span className="weight"> (20% weight)</span>
           </div>
           <div>
             <strong>Timeline:</strong> {result.scoreBreakdown.timelineScore}/100
+            <span className="weight"> (20% weight)</span>
+          </div>
+        </div>
+        <p className="score-calculation">
+          Overall score: ({result.scoreBreakdown.experienceScore} × 0.3) + (
+          {result.scoreBreakdown.skillScore} × 0.3) + ({result.scoreBreakdown.educationScore} × 0.2) + (
+          {result.scoreBreakdown.timelineScore} × 0.2) = <strong>{result.overallScore}/100</strong>
+        </p>
+      </div>
+
+      <div className="assumptions-section">
+        <h2>Assumptions That Influenced This Result</h2>
+        <p className="explanation-intro">
+          Our evaluation is based on explicit assumptions. Understanding these helps you see why
+          the result is what it is, even if you don't agree with it.
+        </p>
+        <div className="assumptions-list">
+          <div className="assumption-item">
+            <strong>Experience Requirements:</strong>
+            <p>
+              We estimate that most roles require 2-5 years of relevant experience. Senior roles
+              need 5+ years, entry-level roles need 0-2 years. Your score reflects how your{' '}
+              {result.scoreBreakdown.experienceScore < 50
+                ? 'limited'
+                : result.scoreBreakdown.experienceScore < 80
+                ? 'moderate'
+                : 'strong'}{' '}
+              experience ({result.scoreBreakdown.experienceScore}/100) compares to these benchmarks.
+            </p>
+          </div>
+
+          <div className="assumption-item">
+            <strong>Skill Proficiency:</strong>
+            <p>
+              Most professional roles require skills at proficiency level 3-4 (intermediate to
+              advanced). Your skill score of {result.scoreBreakdown.skillScore}/100 reflects
+              how well your current skills match typical requirements for your target role.
+            </p>
+          </div>
+
+          <div className="assumption-item">
+            <strong>Education Standards:</strong>
+            <p>
+              We assume a bachelor's degree is standard for most professional roles (80 points).
+              Higher degrees get full points (100), while lower education levels receive
+              proportionally fewer points. Your education score is {result.scoreBreakdown.educationScore}/100.
+            </p>
+          </div>
+
+          <div className="assumption-item">
+            <strong>Timeline Realism:</strong>
+            <p>
+              We estimate learning a new skill to proficiency level 3 takes 3-6 months. Gaining
+              one year of experience requires 12 months (can't be accelerated). Career changes
+              add 6-12 months. Your timeline score of {result.scoreBreakdown.timelineScore}/100
+              reflects how realistic your target timeline is given these constraints.
+            </p>
+          </div>
+
+          <div className="assumption-item">
+            <strong>Probability Band Likelihood:</strong>
+            <p>
+              The likelihood percentages are based on your overall score. Higher scores make the
+              best case more likely (30% if score ≥80, 20% if 50-80, 10% if &lt;50). Lower scores
+              make the worst case more likely (40% if score &lt;50, 30% if 50-80, 20% if ≥80).
+              The average case is always the most likely outcome.
+            </p>
+          </div>
+
+          <div className="assumption-item">
+            <strong>Daily Time Requirements:</strong>
+            <p>
+              We assume you need 2 hours/day minimum, plus 0.5 hours per skill gap, plus 1 hour
+              if you have experience gaps. These hours are for skill building, networking, job
+              searching, and interview preparation combined.
+            </p>
+          </div>
+
+          <div className="assumption-item">
+            <strong>Market Conditions:</strong>
+            <p>
+              Our evaluation assumes typical market conditions. We don't account for economic
+              downturns, industry-specific booms, or exceptional personal circumstances. These
+              factors could significantly change outcomes.
+            </p>
           </div>
         </div>
       </div>
