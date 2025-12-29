@@ -1,5 +1,9 @@
 # Career Reality Checker
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)
+
 A transparent, rule-based tool that gives you an honest assessment of your career goals.
 
 ## What This Is
