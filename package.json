@@ -1,0 +1,29 @@
+{
+  "name": "career-reality-checker",
+  "version": "0.1.0",
+  "description": "A rule-based career assessment tool focused on clarity and auditability",
+  "private": true,
+  "workspaces": [
+    "engine",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspaces",
+    "type-check": "npm run type-check --workspaces",
+    "lint": "npm run lint --workspaces"
+  },
+  "keywords": [
+    "career",
+    "assessment",
+    "rule-based",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
+
