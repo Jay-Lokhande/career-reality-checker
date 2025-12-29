@@ -17,10 +17,21 @@
     "career",
     "assessment",
     "rule-based",
-    "typescript"
+    "typescript",
+    "career-planning",
+    "transparent",
+    "open-source"
   ],
-  "author": "",
+  "author": "Jay Lokhande",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jay-Lokhande/career-reality-checker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jay-Lokhande/career-reality-checker/issues"
+  },
+  "homepage": "https://github.com/Jay-Lokhande/career-reality-checker#readme",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"
