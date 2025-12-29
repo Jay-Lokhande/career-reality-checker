@@ -187,7 +187,7 @@ export class Evaluator {
    * 
    * In a real implementation, you would have a database of required skills per role.
    */
-  private calculateSkillScore(profile: UserProfile, goal: CareerGoal): number {
+  private calculateSkillScore(profile: UserProfile, _goal: CareerGoal): number {
     // For this implementation, we use a simple heuristic:
     // If user has skills listed, assume they're somewhat relevant
     // In reality, you'd match specific skills to the role
@@ -516,7 +516,7 @@ export class Evaluator {
     goal: CareerGoal,
     band: 'best' | 'average' | 'worst',
     experienceScore: number,
-    skillScore: number
+    _skillScore: number
   ): number {
     // Base hours: everyone needs some effort
     let baseHours = 2 // 2 hours/day minimum
@@ -1048,7 +1048,7 @@ export class Evaluator {
   private checkExpectationVsAveragesWarning(
     profile: UserProfile,
     goal: CareerGoal,
-    probabilityBands: {
+    _probabilityBands: {
       best: ProbabilityBandResult
       average: ProbabilityBandResult
       worst: ProbabilityBandResult
@@ -1068,7 +1068,6 @@ export class Evaluator {
       return null
     }
 
-    const warnings: Warning[] = []
     const userTimeline = goal.timeline.targetMonths
     const averageTimeline = matchingScenario.timelineRanges.averageCaseMonths
 

@@ -106,9 +106,9 @@ export default function Home() {
               <select id="education" name="education" defaultValue="bachelors" required>
                 <option value="none">No formal education</option>
                 <option value="high_school">High school</option>
-                <option value="associates">Associate's degree</option>
-                <option value="bachelors">Bachelor's degree</option>
-                <option value="masters">Master's degree</option>
+                <option value="associates">Associate&apos;s degree</option>
+                <option value="bachelors">Bachelor&apos;s degree</option>
+                <option value="masters">Master&apos;s degree</option>
                 <option value="doctorate">Doctorate</option>
               </select>
             </div>
@@ -151,7 +151,7 @@ export default function Home() {
 
             <div className="form-group">
               <label htmlFor="skills">
-                Skills (comma-separated, e.g., "JavaScript, Python, React")
+                Skills (comma-separated, e.g., &quot;JavaScript, Python, React&quot;)
               </label>
               <input
                 type="text"
@@ -277,7 +277,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
         <h2>Why These Probability Bands?</h2>
         <p className="explanation-intro">
           Each probability band represents a different scenario based on how well your current profile
-          aligns with your goal. Here's why each band was assigned:
+          aligns with your goal. Here&apos;s why each band was assigned:
         </p>
 
         <div className="band-explanation">
@@ -299,7 +299,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
           </div>
           {result.probabilityBands.best.requiredActions.length > 0 && (
             <div className="required-actions">
-              <strong>What you'd need to do:</strong>
+              <strong>What you&apos;d need to do:</strong>
               <ul>
                 {result.probabilityBands.best.requiredActions.map((action, idx) => (
                   <li key={idx}>{action}</li>
@@ -326,7 +326,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
           </div>
           {average.requiredActions.length > 0 && (
             <div className="required-actions">
-              <strong>What you'd need to do:</strong>
+              <strong>What you&apos;d need to do:</strong>
               <ul>
                 {average.requiredActions.map((action, idx) => (
                   <li key={idx}>{action}</li>
@@ -355,7 +355,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
           </div>
           {result.probabilityBands.worst.requiredActions.length > 0 && (
             <div className="required-actions">
-              <strong>What you'd need to do:</strong>
+              <strong>What you&apos;d need to do:</strong>
               <ul>
                 {result.probabilityBands.worst.requiredActions.map((action, idx) => (
                   <li key={idx}>{action}</li>
@@ -369,7 +369,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
       <div className="time-requirement-section">
         <h2>Time Commitment</h2>
         <p>
-          To achieve this goal, you'll need to dedicate approximately{' '}
+          To achieve this goal, you&apos;ll need to dedicate approximately{' '}
           <strong>{average.requiredDailyHours} hours per day</strong> to skill development,
           networking, and job searching.
         </p>
@@ -488,7 +488,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
         <h2>Assumptions That Influenced This Result</h2>
         <p className="explanation-intro">
           Our evaluation is based on explicit assumptions. Understanding these helps you see why
-          the result is what it is, even if you don't agree with it.
+          the result is what it is, even if you don&apos;t agree with it.
         </p>
         <div className="assumptions-list">
           <div className="assumption-item">
@@ -517,7 +517,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
           <div className="assumption-item">
             <strong>Education Standards:</strong>
             <p>
-              We assume a bachelor's degree is standard for most professional roles (80 points).
+              We assume a bachelor&apos;s degree is standard for most professional roles (80 points).
               Higher degrees get full points (100), while lower education levels receive
               proportionally fewer points. Your education score is {result.scoreBreakdown.educationScore}/100.
             </p>
@@ -527,7 +527,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
             <strong>Timeline Realism:</strong>
             <p>
               We estimate learning a new skill to proficiency level 3 takes 3-6 months. Gaining
-              one year of experience requires 12 months (can't be accelerated). Career changes
+              one year of experience requires 12 months (can&apos;t be accelerated). Career changes
               add 6-12 months. Your timeline score of {result.scoreBreakdown.timelineScore}/100
               reflects how realistic your target timeline is given these constraints.
             </p>
@@ -555,7 +555,7 @@ function ResultsDisplay({ result }: { result: RealityCheckResult }) {
           <div className="assumption-item">
             <strong>Market Conditions:</strong>
             <p>
-              Our evaluation assumes typical market conditions. We don't account for economic
+              Our evaluation assumes typical market conditions. We don&apos;t account for economic
               downturns, industry-specific booms, or exceptional personal circumstances. These
               factors could significantly change outcomes.
             </p>

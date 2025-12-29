@@ -144,7 +144,7 @@ export class Evaluator {
      *
      * In a real implementation, you would have a database of required skills per role.
      */
-    calculateSkillScore(profile, goal) {
+    calculateSkillScore(profile, _goal) {
         // For this implementation, we use a simple heuristic:
         // If user has skills listed, assume they're somewhat relevant
         // In reality, you'd match specific skills to the role
@@ -438,7 +438,7 @@ export class Evaluator {
      * - Timeline is tight
      * - User is employed (less time available)
      */
-    calculateRequiredHours(profile, goal, band, experienceScore, skillScore) {
+    calculateRequiredHours(profile, goal, band, experienceScore, _skillScore) {
         // Base hours: everyone needs some effort
         let baseHours = 2; // 2 hours/day minimum
         // Add hours for skill gaps
@@ -872,7 +872,7 @@ export class Evaluator {
      *
      * @returns Warning if expectations don't match averages, null otherwise
      */
-    checkExpectationVsAveragesWarning(profile, goal, probabilityBands) {
+    checkExpectationVsAveragesWarning(profile, goal, _probabilityBands) {
         // Try to find a matching scenario
         const matchingScenario = scenarios.find(scenario => scenario.targetRole.toLowerCase().includes(goal.targetRole.toLowerCase()) ||
             goal.targetRole.toLowerCase().includes(scenario.targetRole.toLowerCase()) ||
@@ -882,7 +882,6 @@ export class Evaluator {
             // No matching scenario found, can't compare
             return null;
         }
-        const warnings = [];
         const userTimeline = goal.timeline.targetMonths;
         const averageTimeline = matchingScenario.timelineRanges.averageCaseMonths;
         // Check timeline expectations
