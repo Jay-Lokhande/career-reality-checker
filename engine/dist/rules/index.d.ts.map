@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/rules/index.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AAEH,MAAM,WAAW,IAAI;IACnB,EAAE,EAAE,MAAM,CAAA;IACV,IAAI,EAAE,MAAM,CAAA;IACZ,QAAQ,EAAE,CAAC,OAAO,EAAE,OAAO,KAAK,MAAM,CAAA;CACvC;AAED;;;GAGG;AACH,eAAO,MAAM,KAAK,EAAE,IAAI,EAAO,CAAA"}
